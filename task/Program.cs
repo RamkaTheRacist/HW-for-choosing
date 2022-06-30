@@ -6,7 +6,7 @@ string[] CreateArray(int size) //Создание массива
 {
     return new string[size];
 }
-void FillArray(string[] array) //Наполнение массива рандомными числами
+void FillArray(string[] array) //Наполнение массива рандомными числами(Опционально)
 {
     for(int i = 0; i < array.Length; i++)
     {
@@ -29,7 +29,7 @@ string[] MainTask(string[] inputArray) //Решение задачи
     int size = inputArray.Length;
     int i = 0;
     int index = 0;
-    while(i < size)
+    while(i < size)                                 // Первый прогон цикла для того, чтобы знать какого размера будет новый массив
     {
         string elementLength = inputArray[i];
         if(elementLength.Length <= 3)
@@ -41,7 +41,7 @@ string[] MainTask(string[] inputArray) //Решение задачи
     string[] outputArray = new string[index];
     index = 0;
     i = 0;
-    while(i < size)
+    while(i < size)                                 // Второй прогон цикла с наполнением массива
     {
         string elementLength = inputArray[i];
         if(elementLength.Length <= 3)
@@ -55,11 +55,11 @@ string[] MainTask(string[] inputArray) //Решение задачи
 }
 
 
-Console.WriteLine("Size of massive: ");
+Console.WriteLine("Size of massive: ");                     //Ввод размера первоначального массива
 int size = int.Parse(Console.ReadLine());
-Console.WriteLine("Hand input(1) or random massive(2)?");
+Console.WriteLine("Hand input(1) or random massive(2)?");   //Выбор ввода массива руками/рандомное наполнение
 int choose = int.Parse(Console.ReadLine());
-if(choose == 1)
+if(choose == 1)                                             //Ручной ввод
 {
     string[] inputArray = CreateArray(size);
     for(int i = 0; i < size; i++)
@@ -72,7 +72,7 @@ if(choose == 1)
     Console.WriteLine();
     string[] outputArray = MainTask(inputArray);
     
-    if(outputArray.Length == 0)
+    if(outputArray.Length == 0)                             //Проверка на пустой массив
     {
         Console.WriteLine("New array is empty");
     }
@@ -82,7 +82,7 @@ if(choose == 1)
         Console.Write(PrintArray(outputArray));
     }
 }
-else if(choose == 2)
+else if(choose == 2)                                        //Рандомное наполнение массива
 {
     string[] inputArray = CreateArray(size);
     FillArray(inputArray);
@@ -92,7 +92,7 @@ else if(choose == 2)
     Console.WriteLine();
     string[] outputArray = MainTask(inputArray);
     
-    if(outputArray.Length == 0)
+    if(outputArray.Length == 0)                             //Проверка на пустой массив
     {
         Console.WriteLine("New array is empty");
     }
@@ -102,5 +102,5 @@ else if(choose == 2)
         Console.Write(PrintArray(outputArray));
     }
 }
-else Console.WriteLine("Input error");
+else Console.WriteLine("Input error");                     //Если не был выбран ни ручной ни рандомный тип наполнения массива
 
